@@ -14,7 +14,9 @@
 <meta property="og:title" content="Mehrle Holdings LLC" />
 <meta property="og:description" content="An independent software company. We design, build, and publish our own apps." />
 <meta property="og:url" content="https://mehrleholdingsllc.com/" />
-<meta name="twitter:card" content="summary" />
+<meta property="og:image" content="https://mehrleholdingsllc.com/mehrle-logo.jpg" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://mehrleholdingsllc.com/mehrle-logo.jpg" />
 
 <!-- Inline SVG favicon (self-contained, no external request) -->
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%231b1614'/%3E%3Ctext x='50' y='68' font-family='Georgia,serif' font-size='56' font-weight='700' text-anchor='middle' fill='%23d98a3d'%3EM%3C/text%3E%3C/svg%3E" />
@@ -103,6 +105,11 @@
       radial-gradient(520px 320px at 8% 18%, color-mix(in srgb, var(--accent) 9%, transparent), transparent 72%);
   }
   .hero .wrap { position: relative; z-index: 1; }
+  .hero-inner { text-align: center; display: flex; flex-direction: column; align-items: center; }
+  .hero-logo { width: min(320px, 82%); height: auto; border-radius: 24px; border: 1px solid var(--line); box-shadow: var(--shadow); margin-bottom: 30px; }
+  .hero-inner h1 { max-width: 20ch; }
+  .hero-inner .lede { margin-left: auto; margin-right: auto; }
+  .hero-inner .cta-row { justify-content: center; }
   .eyebrow {
     display: inline-block; font-size: 13px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase;
     color: var(--accent-deep); background: var(--paper-2); border: 1px solid var(--line);
@@ -202,8 +209,8 @@
 <main>
   <!-- HERO -->
   <section class="hero" aria-labelledby="hero-title">
-    <div class="wrap">
-      <span class="eyebrow">Independent Software Company</span>
+    <div class="wrap hero-inner">
+      <img class="hero-logo" src="mehrle-logo.jpg" alt="Mehrle Holdings LLC logo — a serif M inside the outline of Ohio, above the words Mehrle Holdings LLC" width="320" height="320" />
       <h1 id="hero-title">We build software worth keeping on your home screen.</h1>
       <p class="lede">Mehrle Holdings LLC designs, builds, and publishes its own apps. A small business focused on improving the user experience.</p>
       <div class="cta-row">
