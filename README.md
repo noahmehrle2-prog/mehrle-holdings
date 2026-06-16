@@ -23,27 +23,27 @@ Apple verifies the LLC against a **D-U-N-S number** — a free business identifi
 - Get or look up a free number at **developer.apple.com/enroll/duns-lookup** (or dnb.com).
 - Write down the **exact** legal name and address on the D&B record. Everything downstream — the LLC's formation documents, the domain registrant, the App Store Connect entity name, and your message to Robert — must match it **character-for-character** (`Mehrle Holdings LLC` vs `Mehrle Holdings, L.L.C.` vs a trailing period are all *different* to Apple). Name/address mismatch is the #1 cause of stalled migrations.
 
-## Step 1 — Buy the domain
-Register **`mehrleholdingsllc.com`**. (The site is already written for that exact domain — canonical tags, OG tags, sitemap, and the `hello@mehrleholdingsllc.com` email all assume it.)
-- Use **Cloudflare Registrar**, **Porkbun**, or **Namecheap** (~$10–12/yr).
-- **Register it in the LLC's name** if the registrar allows (Mehrle Holdings LLC as the registrant org). This is the single strongest "domain associated with the organization" signal for Apple.
-- If `.com` is taken: `mehrleholdings.co`, `mehrle.dev`, or `mehrleholdings.app` are fine — but then **find-and-replace `mehrleholdingsllc.com`** across all files first.
+## Step 1 — Domain ✅ DONE
+Bought **`mehrleholdingsllc.com`** on **GoDaddy**. The site is written for exactly this domain (canonical/OG/sitemap/email).
+- ⚠️ **Registrant = the LLC:** in GoDaddy → domain → Contacts, make sure the registrant *organization* is **Mehrle Holdings LLC** (not just "Noah Mehrle"). This is the strongest "domain associated with the org" signal Apple checks. GoDaddy's free WHOIS privacy is fine, but the underlying record should name the LLC.
 
-## Step 2 — Deploy (pick one)
-**Netlify (easiest — you've used it before):**
-1. app.netlify.com → "Add new site" → "Deploy manually".
-2. Drag the **`mehrle-holdings/` folder** onto the drop zone. Live in ~10 seconds on a `*.netlify.app` URL.
-3. Site settings → Domain management → add custom domain `mehrleholdingsllc.com` → follow Netlify's DNS instructions (either point your registrar's nameservers at Netlify, or add the CNAME/A records it shows). HTTPS is automatic.
+## Step 2 — Hosting ✅ DONE (GitHub Pages — free, auto-HTTPS)
+Deployed to GitHub Pages: repo **github.com/noahmehrle2-prog/mehrle-holdings**, custom domain `mehrleholdingsllc.com` set via the `CNAME` file. Built and serving; it just needs DNS pointed at GitHub.
 
-**GitHub Pages (free alt):** push these files to a repo → Settings → Pages → deploy from branch → add a `CNAME` file containing `mehrleholdingsllc.com` → set the same DNS at your registrar.
+**Point GoDaddy DNS at GitHub Pages** — GoDaddy → My Products → `mehrleholdingsllc.com` → DNS → Manage DNS:
+1. Delete GoDaddy's default Parked `A @` record and the `CNAME www → @` record.
+2. Add **four A records**, Host `@`, Value (one each):
+   `185.199.108.153` · `185.199.109.153` · `185.199.110.153` · `185.199.111.153`
+3. Add **one CNAME**, Host `www`, Value `noahmehrle2-prog.github.io`.
+4. Save. Propagates in ~10 min–few hours; GitHub then auto-issues the HTTPS cert. Then turn on "Enforce HTTPS" (repo → Settings → Pages).
 
-**Cloudflare Pages (free alt):** connect repo or direct-upload; add the custom domain in the dashboard.
-
-## Step 3 — Set up the email address (strengthens org association)
-Make `hello@mehrleholdingsllc.com` actually work — Apple may email it, and a domain-matched contact reinforces ownership.
-- Most registrars (Cloudflare, Porkbun, Namecheap) offer **free email forwarding**. Forward `hello@mehrleholdingsllc.com` → `noah.mehrle2@gmail.com`.
-- **Send a test message** to `hello@mehrleholdingsllc.com` and confirm it arrives (and isn't in spam). A bouncing address is *worse* than none — Apple/D&B may email it to corroborate ownership.
-- **Why it matters:** Apple cross-checks the website domain against the **contact/work email on your developer account**. Once the domain is live, set your App Store Connect account contact to `hello@mehrleholdingsllc.com` (forwarding to your Gmail) so the domains match. A full mailbox / Workspace is optional — forwarding is enough.
+## Step 3 — Email: make `hello@mehrleholdingsllc.com` work
+GoDaddy no longer bundles free forwarding, so use **ImprovMX** (free, keeps DNS at GoDaddy):
+1. At improvmx.com, add `mehrleholdingsllc.com` and create alias `hello@` → `noah.mehrle2@gmail.com`.
+2. In GoDaddy DNS add: `MX @ → mx1.improvmx.com` (priority 10), `MX @ → mx2.improvmx.com` (priority 20), `TXT @ → v=spf1 include:spf.improvmx.com ~all`.
+3. Send a test to `hello@mehrleholdingsllc.com` and confirm it lands (not spam). A bouncing address is *worse* than none — Apple/D&B may email it.
+(Alternatives: GoDaddy/Microsoft 365 mailbox ~$2/mo, or Cloudflare Email Routing if you move DNS to Cloudflare.)
+- **Why it matters:** Apple cross-checks the website domain against your developer-account contact email — set ASC's account contact to `hello@mehrleholdingsllc.com` once it works.
 
 ## Step 4 — Verify it's live
 Open in a browser and confirm:
