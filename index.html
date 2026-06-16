@@ -85,11 +85,9 @@
   .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; color: var(--ink); font-size: 17px; letter-spacing: -.01em; }
   .brand:hover { text-decoration: none; }
   .mark {
-    width: 30px; height: 30px; border-radius: 9px; flex: none;
-    background: var(--ink); color: var(--accent);
-    display: grid; place-items: center; font-family: Georgia, "Times New Roman", serif; font-weight: 700; font-size: 19px;
+    width: 30px; height: 30px; border-radius: 8px; flex: none;
+    object-fit: cover; display: block; border: 1px solid var(--line);
   }
-  @media (prefers-color-scheme: dark) { .mark { background: #000; } }
   .nav-links { display: flex; gap: 28px; align-items: center; }
   .nav-links a { color: var(--ink-soft); font-size: 15px; font-weight: 500; }
   .nav-links a:hover { color: var(--ink); text-decoration: none; }
@@ -195,7 +193,7 @@
 <header>
   <div class="wrap nav">
     <a class="brand" href="/" aria-label="Mehrle Holdings home">
-      <span class="mark" aria-hidden="true">M</span>
+      <img class="mark" src="mehrle-mark.png" alt="" width="30" height="30" />
       Mehrle Holdings
     </a>
     <nav class="nav-links" aria-label="Primary">

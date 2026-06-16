@@ -18,8 +18,7 @@
   header { border-bottom:1px solid var(--line); }
   .nav { display:flex; align-items:center; height:64px; }
   .brand { display:flex; align-items:center; gap:10px; font-weight:700; color:var(--ink); text-decoration:none; font-size:17px; }
-  .mark { width:30px; height:30px; border-radius:9px; background:var(--ink); color:var(--accent); display:grid; place-items:center; font-family:Georgia,serif; font-weight:700; font-size:19px; }
-  @media (prefers-color-scheme: dark){ .mark{ background:#000; } }
+  .mark { width:30px; height:30px; border-radius:8px; flex:none; object-fit:cover; display:block; border:1px solid var(--line); }
   main { padding:56px 0 72px; }
   h1 { font-size:2rem; letter-spacing:-.02em; margin:0 0 6px; }
   .updated { color:var(--ink-soft); font-size:.92rem; margin:0 0 36px; }
@@ -34,7 +33,7 @@
 </style>
 </head>
 <body>
-<header><div class="wrap nav"><a class="brand" href="/"><span class="mark" aria-hidden="true">M</span>Mehrle Holdings</a></div></header>
+<header><div class="wrap nav"><a class="brand" href="/"><img class="mark" src="mehrle-mark.png" alt="" width="30" height="30" />Mehrle Holdings</a></div></header>
 <main class="wrap">
   <h1>Privacy Policy</h1>
   <p class="updated">Mehrle Holdings LLC · Last updated June 2026</p>
