@@ -63,7 +63,6 @@ The site uses sensible defaults; confirm or change these:
 | State of organization | **Ohio** (footer + terms governing law) | ⚠️ change if the LLC is registered in another state |
 | Location | **Ohio · USA** | ⚠️ edit if wrong (no street address is shown, by design) |
 | Founder | **Noah Mehrle** (About section) | ✅ |
-| Founded | **2026** | ⚠️ set to the LLC's formation year |
 | Contact email | **hello@mehrleholdingsllc.com** | set up forwarding (Step 3) — or swap to your Gmail |
 
 > **No personal address, DOB, or phone is on the site, on purpose.** The only public contact is the company email.
