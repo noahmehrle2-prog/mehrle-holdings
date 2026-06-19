@@ -14,7 +14,7 @@ terms.html     Terms of use
 robots.txt      Allow all crawlers
 sitemap.xml     Three URLs
 ```
-No build step, no dependencies, no JavaScript, no external requests (fonts are system, favicon is inline SVG). Drop the folder on any static host and it works.
+No build step, no dependencies, no JavaScript, no external requests (fonts are system; favicons are local PNG files). Drop the folder on any static host and it works.
 
 ---
 
